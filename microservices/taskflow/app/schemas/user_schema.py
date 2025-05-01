@@ -1,28 +1,34 @@
-from pydantic import BaseModel
+from typing import Optional
+from pydantic import BaseModel, Field
 
 class LoginRequest(BaseModel):
     username: str
     password: str
+    
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
-class UserBase(BaseModel):
+class UserCreate(BaseModel):
+    username: str = Field(..., example="julian")
+    email: str = Field(..., example="julian")
+    password: str = Field(..., min_length=8, example="prueba1234")
+    full_name: Optional[str] = Field(None, example="Julian Sarmiento")
+
+# 📤 Usuario sin contraseña, para respuestas
+class UserResponse(BaseModel):
+    id: int
     username: str
     email: str
-
-class UserCreate(UserBase):
-    password: str
-
-class User(UserBase):
-    id: int
-    full_name: str
+    full_name: Optional[str] = None
     is_active: bool
     is_superuser: bool
 
     class Config:
         orm_mode = True
 
-class Token(BaseModel):
+# 📤 Respuesta que incluye el token
+class UserWithToken(BaseModel):
+    user: UserResponse
     access_token: str
-    token_type: str
-
-class TokenData(BaseModel):
-    username: str | None = None
+    token_type: str = "bearer"
