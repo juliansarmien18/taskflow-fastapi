@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from .api.v1.endpoints.taskflow_endpoint import router as taskflow_router
+from .api.v1.endpoints.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -18,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(taskflow_router, prefix="/taskflow", tags=["taskflow"])
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
 
 if __name__ == "__main__":
     import uvicorn
