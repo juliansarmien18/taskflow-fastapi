@@ -10,9 +10,9 @@ from microservices.taskflow.app.core.security import verify_password
 router = APIRouter()
 
 @router.post("/token", response_model=schemas.Token)
-def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
-    user = crud.get_user_by_username(db, username=form_data.username)
-    if not user or not verify_password(form_data.password, user.hashed_password):
+def login_for_access_token(login_data: schemas.LoginRequest, db: Session = Depends(get_db)):
+    user = crud.get_user_by_username(db, username=login_data.username)
+    if not user or not verify_password(login_data.password, user.hashed_password):
         raise HTTPException(
             status_code=400,
             detail="Incorrect username or password",
