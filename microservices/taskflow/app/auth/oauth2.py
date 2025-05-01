@@ -2,10 +2,10 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError
 from sqlalchemy.orm import Session
-from microservices.taskflow.app.core.config import settings
-from microservices.taskflow.app.auth.jwt import verify_token
-from microservices.taskflow.app.db.session import get_db
-from microservices.taskflow.app.models.user_model import User
+from app.core.config import settings
+from app.auth.jwt import verify_token
+from app.db.session import get_db
+from app.models.user_model import User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 

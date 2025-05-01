@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from microservices.taskflow.app.models.taskflow import *
-from microservices.taskflow.app.schemas.taskflow import *
+from app.models.taskflow import *
+from app.schemas.taskflow import *
 
 def get_taskflow(db: Session, item_id: int):
     return db.query(Taskflow).filter(Taskflow.id == item_id).first()

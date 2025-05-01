@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
-from microservices.taskflow.app.schemas.user_schema import TokenData
-from microservices.taskflow.app.core.config import settings
+from app.schemas.user_schema import TokenData
+from app.core.config import settings
 
 SECRET_KEY = settings.secret_key
 ALGORITHM = settings.algorithm

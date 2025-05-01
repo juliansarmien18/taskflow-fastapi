@@ -11,7 +11,7 @@
             "request": "launch",
             "module": "uvicorn",
             "args": [
-                "microservices.taskflow.app.main:app",
+                "app.main:app",
                 "--reload"
             ],
             "jinja": true

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from microservices.taskflow.app.crud.taskflow import *
-from microservices.taskflow.app.schemas.taskflow import *
-from microservices.taskflow.app.db.session import get_db
+from app.crud.taskflow import *
+from app.schemas.taskflow import *
+from app.db.session import get_db
 
 router = APIRouter()
 
