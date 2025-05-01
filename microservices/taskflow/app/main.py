@@ -1,9 +1,13 @@
 from fastapi import FastAPI
+
+from microservices.taskflow.app.db.utils import run_migrations
 from .api.v1.endpoints.taskflow_endpoint import router as taskflow_router
 from .api.v1.endpoints.auth import router as auth_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+run_migrations()
 
 origins = [
     "http://localhost",
