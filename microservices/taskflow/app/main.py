@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1.endpoints.taskflow_endpoint import router as taskflow_router
+from .api.v1.endpoints.taskflow_endpoint import router as taskflow_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app import crud, schemas
-from app.db.session import get_db
-from app.auth.jwt import create_access_token
-from app.auth.oauth2 import get_current_user
-from app.core.security import verify_password
+from microservices.taskflow.app.db.session import get_db
+from microservices.taskflow.app.auth.jwt import create_access_token
+from microservices.taskflow.app.auth.oauth2 import get_current_user
+from microservices.taskflow.app.core.security import verify_password
 
 router = APIRouter()
 

@@ -6,7 +6,7 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from app.db.base import Base
+from microservices.taskflow.app.db.base import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

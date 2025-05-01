@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from app.db.base import Base
+from microservices.taskflow.app.db.base import Base
 
 class Taskflow(Base):
     __tablename__ = "taskflows"
