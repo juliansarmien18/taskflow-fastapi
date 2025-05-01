@@ -23,7 +23,6 @@ Una API RESTful para que los usuarios creen y gestionen tareas con autenticació
 > Como usuario quiero iniciar sesión para obtener un token de acceso a mis recursos.
 - Endpoint: `POST /login/`
 - JWT
-- OAuth2 Password Flow
 
 ### 📝 HU03 - Crear tarea
 > Como usuario quiero crear una tarea con título, descripción, vencimiento y etiquetas para organizar mi día.
