@@ -1,0 +1,10 @@
+services:
+
+  microservice-taskflow:
+    build:
+      context: ../microservices/taskflow
+    container_name: taskflow-microservice-taskflow
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./test.db
