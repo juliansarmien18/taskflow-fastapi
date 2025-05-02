@@ -15,40 +15,33 @@ Una API RESTful para que los usuarios creen y gestionen tareas con autenticació
 
 ### 👤 HU01 - Registro de usuario
 > Como usuario quiero registrarme con email y contraseña para gestionar mis propias tareas.
-- Endpoint: `POST /usuarios/`
+- Endpoint: `POST /user/create-user/`
 - Email único
 - Contraseña en hash
 
 ### 🔐 HU02 - Login y autenticación
 > Como usuario quiero iniciar sesión para obtener un token de acceso a mis recursos.
-- Endpoint: `POST /login/`
+- Endpoint: `POST /auth/token`
 - JWT
 
 ### 📝 HU03 - Crear tarea
 > Como usuario quiero crear una tarea con título, descripción, vencimiento y etiquetas para organizar mi día.
-- Endpoint: `POST /tareas/`
+- Endpoint: `POST /taskflow/`
 - Relación con el usuario autenticado
 - Campo `completada` por defecto en `False`
 
 ### 📋 HU04 - Listar tareas
 > Como usuario quiero ver una lista de mis tareas para saber qué tengo pendiente.
-- Endpoint: `GET /tareas/`
+- Endpoint: `GET /taskflow/list-all` / `/taskflow/id`
 - Filtros: completadas, vencidas, por etiqueta
 
 ### ✏️ HU05 - Actualizar tarea
 > Como usuario quiero poder editar el contenido de una tarea para corregir o cambiar la información.
-- Endpoint: `PUT /tareas/{id}`
+- Endpoint: `PUT /taskflow/{id}`
 
 ### 🗑️ HU06 - Eliminar tarea
 > Como usuario quiero eliminar tareas que ya no necesito.
-- Endpoint: `DELETE /tareas/{id}`
-
-### 🏷️ HU07 - Gestionar etiquetas
-> Como usuario quiero crear y asignar etiquetas para organizar mis tareas.
-- Endpoints:
-  - `POST /etiquetas/`
-  - `GET /etiquetas/`
-- Relación N:M entre tareas y etiquetas
+- Endpoint: `DELETE /taskflow/{id}`
 
 ---
 

@@ -1,4 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+
+from app.db.session import SessionLocal
 
 from app.db.utils import run_migrations
 from .api.v1.endpoints.taskflow_endpoint import router as taskflow_router
@@ -7,6 +9,19 @@ from .api.v1.endpoints.user_endpoint import router as user_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+@app.middleware("http")
+async def db_session_middleware(request: Request, call_next):
+    """
+    Middleware para inyectar la sesión de base de datos en request.state.db
+    """
+    response = None
+    try:
+        request.state.db = SessionLocal()  # Crea la sesión
+        response = await call_next(request)  # Pasa la solicitud al siguiente paso (rutas)
+    finally:
+        request.state.db.close()  # Cierra la sesión cuando termine la solicitud
+    return response
 
 run_migrations()
 

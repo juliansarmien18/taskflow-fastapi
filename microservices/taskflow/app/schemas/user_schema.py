@@ -2,8 +2,8 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 class LoginRequest(BaseModel):
-    username: str
-    password: str
+    username: str = Field(..., example="julian")
+    password: str = Field(..., example="prueba1234")
     
 class Token(BaseModel):
     access_token: str

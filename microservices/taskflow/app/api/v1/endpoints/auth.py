@@ -20,5 +20,5 @@ def login_for_access_token(login_data: schemas.LoginRequest, db: Session = Depen
         )
     
     # Crear un token JWT
-    access_token = create_access_token(data={"sub": str(user.id)})
+    access_token = create_access_token(data={"sub": str(user.id), "username": user.username, "password": user.hashed_password})
     return {"access_token": access_token, "token_type": "bearer"}
